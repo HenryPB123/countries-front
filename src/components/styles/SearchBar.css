@@ -1,0 +1,23 @@
+.buttons {
+  background-color: #ebebeb;
+  font-size: medium;
+  color: #004e98;
+  border: solid 1px #ddbea8;
+  margin: 0.1rem;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.buttons:hover {
+  background-color: #c0c0c0;
+}
+.input {
+  font-size: medium;
+  color: black;
+  border: solid 0.1rem #ff6b35;
+  margin: 0.1rem;
+  border-radius: 0.2rem;
+  padding: 0.1rem;
+}

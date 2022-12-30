@@ -1,0 +1,8 @@
+.container_countries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.loading {
+  justify-content: center;
+}

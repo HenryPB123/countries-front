@@ -1,0 +1,27 @@
+body {
+  margin: 2rem;
+  min-width: 100vh;
+  min-height: 95vh;
+  background-image: url("https://mapamundi.online/wp-content/uploads/2019/02/mapa-mundi-vintage-antiguo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: hard-light;
+  background-color: #64d0d8;
+  background-position: center;
+  background-attachment: fixed;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+  align-items: stretch;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

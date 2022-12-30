@@ -1,0 +1,43 @@
+.container_country {
+  background-color: #caf0f8;
+  border: solid 2px #1d3557;
+  margin: 1rem;
+  padding: 0.6rem;
+  width: 12rem;
+  height: 16rem;
+  color: #03045e;
+  border-radius: 0.1rem;
+  box-shadow: -2px 2px 2px 2px grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.container_country:hover {
+  background-color: #a8e5f1;
+}
+
+.flag {
+  border: solid 1px #1d3557;
+
+  width: 12rem;
+  height: 8rem;
+  border-radius: 0.2rem;
+}
+.title_card {
+  font-weight: bolder;
+  font-size: large;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  margin-bottom: 0.1rem;
+}
+.continent {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.link_back {
+  text-decoration: none;
+  font-weight: bold;
+}

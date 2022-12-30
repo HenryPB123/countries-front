@@ -1,0 +1,26 @@
+.container_pag {
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.button_pag {
+  background-color: #1a659e;
+  width: 1.6rem;
+  border: solid 1px #004e89;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: flex;
+  color: #efefd0;
+  justify-content: space-around;
+  box-shadow: -2px 2px 2px 2px #f7c59f;
+  margin: 0.1rem;
+}
+
+.button_pag_selected {
+  background-color: #e29578;
+}
+
+.button_pag:hover {
+  background-color: #e29578;
+}

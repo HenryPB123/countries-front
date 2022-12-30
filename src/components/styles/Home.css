@@ -1,0 +1,37 @@
+.container_home {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 10%;
+  padding: inherit;
+}
+.title {
+  font-family: ui-monospace;
+  font-style: italic;
+  font-size: 5rem;
+  font-weight: bolder;
+  color: #004e89;
+  text-shadow: -3px 3px lightslategrey;
+}
+
+.button {
+  width: 15rem;
+  height: 6rem;
+  background-color: #1a659e;
+  border-radius: 1rem;
+  border: solid 0.1rem;
+  cursor: pointer;
+  transition: 1s;
+  font-size: 3rem;
+  font-weight: bolder;
+  color: #efefd0;
+  /* box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem white; */
+}
+.button:hover {
+  background-color: #004e89;
+  border: solid 0.1rem #3a6ea5;
+  font-size: 5rem;
+  width: 20rem;
+  height: 8rem;
+  transform: rotate(720deg);
+}

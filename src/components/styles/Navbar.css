@@ -1,0 +1,9 @@
+.container-nav {
+  background-color: #004e89;
+  padding: 0.5rem;
+  border: solid 0.2rem #ddbea8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}

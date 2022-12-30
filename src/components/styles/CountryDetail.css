@@ -1,0 +1,42 @@
+.container_detail {
+  padding-top: 1rem;
+}
+.container_CA {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container_dtcountries {
+  margin: 1rem;
+  padding-top: 1rem;
+  border-radius: 0.2rem;
+  color: #f1faee;
+  background-color: #457b9d;
+}
+.container_actis {
+  margin: 1rem;
+  padding: 1rem;
+  color: #f1faee;
+}
+.div_link {
+  background-color: aliceblue;
+  text-decoration: none;
+}
+
+.flag_detail {
+  margin: 1rem;
+  margin-top: 0.5rem;
+
+  margin-bottom: 0rem;
+  width: 30rem;
+  border-radius: 0.5rem;
+  border: solid 1px whitesmoke;
+}
+.div_dos {
+  margin-bottom: 1rem;
+}
+.title_one {
+  color: #023047;
+  text-shadow: 2px 2px 2px #457b9d;
+}
