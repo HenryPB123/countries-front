@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Activity from "./Activity,";
 import "./styles/CountryDetail.css";
 import "./styles/Activity.css";
 import { getCountryDetail } from "../store/slices/countries/controllersCountries";
-import { deleteActivity } from "../store/slices/activities/controllersActivities";
+import {
+  deleteActivity,
+  getIdCountry,
+} from "../store/slices/activities/controllersActivities";
 
 const CountryDetail = () => {
   const { countryDetail } = useSelector((state) => state.countries);
   const [activities, setActivities] = useState([]);
   const { id } = useParams();
+  let history = useHistory();
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,6 +31,12 @@ const CountryDetail = () => {
     setActivities(activitiesFiltered);
     dispatch(deleteActivity(id));
   }
+
+  const editButton = (idActi) => {
+    dispatch(getIdCountry(id));
+    history.push(`/edit/${idActi}`);
+  };
+
   return (
     <div className="container_detail">
       {countryDetail ? (
@@ -66,8 +76,8 @@ const CountryDetail = () => {
                 <h1>Actividades</h1>
               </div>
               <div>
-                {activities?.map((activity) => (
-                  <div className="activity_dos">
+                {activities?.map((activity, i) => (
+                  <div className="activity_dos" key={i}>
                     <div className="activity" key={activity.id}>
                       <Activity
                         id={activity.id}
@@ -78,9 +88,15 @@ const CountryDetail = () => {
                         description={activity.description}
                       />
                     </div>
-                    <Link to={`/edit/${activity.id}`}>
+                    <button
+                      className="buttons"
+                      onClick={() => editButton(activity.id)}
+                    >
+                      Editar
+                    </button>
+                    {/* <Link to={`/edit/${activity.id}`}>
                       <button className="buttons">Editar</button>
-                    </Link>
+                    </Link> */}
                     <button
                       className="buttons"
                       onClick={() => onClickDelete(activity.id)}

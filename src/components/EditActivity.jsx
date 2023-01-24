@@ -1,14 +1,32 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import {
   getActivities,
   getUpdateActivity,
 } from "../store/slices/activities/controllersActivities";
 
 const EditActivity = () => {
+  //activities
+  const { activities, idCountry } = useSelector((state) => state.activities);
+  const { id } = useParams();
   const dispatch = useDispatch();
+  let history = useHistory();
+
+  let activityFound = {};
+  useEffect(() => {
+    dispatch(getActivities());
+  }, [dispatch]);
+
+  if (Array.isArray(activities)) {
+    activities.map((activity) => {
+      if (activity.id === id) {
+        activityFound = activity;
+      }
+    });
+  }
+
   const [editInput, setEditInput] = useState({
     nameActivity: "",
     difficulty: 0,
@@ -24,23 +42,6 @@ const EditActivity = () => {
     description: "",
     season: "",
   });
-
-  //activities
-  const { activities } = useSelector((state) => state.activities);
-  const { id } = useParams();
-
-  useEffect(() => {
-    dispatch(getActivities());
-  }, [dispatch]);
-
-  let activityFound = {};
-
-  activities.map((activity) => {
-    if (activity.id === id) {
-      activityFound = activity;
-    }
-  });
-  console.log("activities", activities);
 
   let inputado = {};
   editInput.nameActivity !== "" &&
@@ -62,24 +63,6 @@ const EditActivity = () => {
         ...errors,
         nameActivity: "El nombre no debe contener números",
       });
-    } else if (editInput.difficulty > 0) {
-      if (editInput.difficulty > 5 || editInput.difficulty < 1) {
-        setErrors({
-          ...errors,
-          difficulty: "El valor númerico debe estar en rango de 1 a 5",
-        });
-      }
-    } else if (editInput.duration.length > 0) {
-      setErrors({
-        ...errors,
-        duration:
-          "Agrega el tiempo que dura la actividad especificando horas,semanas,etc",
-      });
-    } else if (editInput.season.length > 0) {
-      setErrors({
-        ...errors,
-        season: "Selecciona la temporada donde se va a realizar la actividad",
-      });
     } else {
       if (
         editInput.nameActivity === "" &&
@@ -91,6 +74,7 @@ const EditActivity = () => {
         alert("No hay datos para actualizar");
       } else {
         dispatch(getUpdateActivity(id, inputado));
+
         alert("Actividad actualizada");
       }
     }
@@ -118,14 +102,17 @@ const EditActivity = () => {
         ...editInput,
         season: season,
       });
-    } else {
-      alert("Debes elegir una temporada");
     }
   }
 
   function handleEdit(e) {
-    validateEditInput();
     e.preventDefault();
+    validateEditInput();
+    history.goBack(`detail/${idCountry}`);
+  }
+
+  function backButton() {
+    history.goBack(`detail/${idCountry}`);
   }
 
   return (
@@ -164,12 +151,12 @@ const EditActivity = () => {
             id="2"
             type="number"
             name="difficulty"
+            min={1}
+            max={5}
             // value={input.difficulty}
             defaultValue={activityFound.difficulty}
             onChange={(e) => handleInputChange(e)}
           />
-
-          {errors.difficulty && <p>{errors.difficulty}</p>}
         </div>
 
         <br />
@@ -183,8 +170,7 @@ const EditActivity = () => {
             defaultValue={activityFound.duration}
             onChange={(e) => handleInputChange(e)}
           />
-
-          {errors.duration && <p>{errors.duration}</p>}
+          <div>Especifica la duración, horas, días, semanas, etc.</div>
         </div>
         <br />
         <div>
@@ -197,8 +183,6 @@ const EditActivity = () => {
             defaultValue={activityFound.description}
             onChange={(e) => handleInputChange(e)}
           />
-
-          {errors.description && <p>{errors.description}</p>}
         </div>
 
         <br />
@@ -206,9 +190,11 @@ const EditActivity = () => {
           <label htmlFor="4">
             <div>Seasons</div>
           </label>
+          <br />
           <label htmlFor="summer">
             Summer
             <input
+              style={{ marginRight: "15px" }}
               id="summer"
               type="radio"
               name="seasons"
@@ -220,6 +206,7 @@ const EditActivity = () => {
           <label htmlFor="autumn">
             Autumn
             <input
+              style={{ marginRight: "15px" }}
               id="autumn"
               type="radio"
               name="seasons"
@@ -232,6 +219,7 @@ const EditActivity = () => {
           <label htmlFor="winter">
             Winter
             <input
+              style={{ marginRight: "15px" }}
               id="winter"
               type="radio"
               name="seasons"
@@ -244,6 +232,7 @@ const EditActivity = () => {
           <label htmlFor="spring">
             Spring
             <input
+              style={{ marginRight: "15px" }}
               id="spring"
               type="radio"
               name="seasons"
@@ -265,9 +254,9 @@ const EditActivity = () => {
           Edit Activity
         </button>
 
-        <Link to="/main">
-          <button className="buttons">Back</button>
-        </Link>
+        <button className="buttons" onClick={() => backButton()}>
+          Back
+        </button>
       </div>
     </div>
   );

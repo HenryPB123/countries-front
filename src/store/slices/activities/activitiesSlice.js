@@ -6,6 +6,7 @@ export const activitySlice = createSlice({
   initialState: {
     activities: [],
     activitiesNames: [],
+    idCountry: "",
   }, //stado
 
   reducers: {
@@ -25,6 +26,9 @@ export const activitySlice = createSlice({
     updateActivity: (state, action) => {
       state.activities = action.payload;
     },
+    setIdCountry: (state, action) => {
+      state.idCountry = action.payload;
+    },
   },
 });
 
@@ -34,6 +38,7 @@ export const {
   setActivitiesNames,
   setActivities,
   updateActivity,
+  setIdCountry,
 } = activitySlice.actions;
 
 export default activitySlice.reducer;

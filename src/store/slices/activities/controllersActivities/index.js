@@ -5,6 +5,7 @@ import {
   setActivities,
   setActivitiesNames,
   setActivity,
+  setIdCountry,
   updateActivity,
 } from "../activitiesSlice";
 
@@ -53,8 +54,6 @@ export const getActivities = () => {
 };
 
 export const getUpdateActivity = (id, input) => {
-  console.log("reduID", id);
-  console.log("reduInput", input);
   return (dispatch) => {
     axios
       .put(`http://localhost:3001/activities/?id=${id}`, input)
@@ -63,4 +62,8 @@ export const getUpdateActivity = (id, input) => {
       })
       .catch((error) => console.log(error));
   };
+};
+
+export const getIdCountry = (id) => {
+  return setIdCountry(id);
 };
