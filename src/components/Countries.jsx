@@ -29,12 +29,13 @@ const Countries = () => {
   return (
     <div>
       <div className="container_pag">
-        {currentCountries.length > 0 && (
+        {currentCountries.length > 9 && (
           <div>
             <Pagination
               countriesByPage={countriesByPage}
               countries={countries.length}
               paginado={paginado}
+              currentPage={currentPage}
             />
           </div>
         )}

@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/Pagination.css";
 
-const Pagination = ({ countriesByPage, countries, paginado }) => {
+const Pagination = ({ countriesByPage, countries, paginado, currentPage }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(countries / countriesByPage); i++) {
@@ -17,6 +17,15 @@ const Pagination = ({ countriesByPage, countries, paginado }) => {
               className="button_pag"
               key={number}
               onClick={() => paginado(number)}
+              style={
+                number === currentPage
+                  ? {
+                      backgroundColor: "#e29578",
+                      color: "white",
+                      border: "solid 2px #004e89",
+                    }
+                  : {}
+              }
             >
               {number}
             </button>
